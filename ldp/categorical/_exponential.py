@@ -1,0 +1,59 @@
+# -*- coding: utf-8 -*-
+
+# Copyright 2026 Spanish National Research Council (CSIC)
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License. You may obtain
+# a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations
+# under the License.
+
+"""Exponential mechanism for local DP."""
+
+import numpy as np
+import pandas as pd
+import typing
+
+
+def dp_exponential(
+    df: pd.DataFrame,
+    column: str,
+    epsilon: float,
+    new_column=False,
+) -> pd.DataFrame:
+    "Apply the Exponential mechanism to a numeric column of a dataframe"
+
+    if column not in df.keys():
+        raise ValueError("Column: {column} not in the dataframe.")
+
+    if epsilon <= 0:
+        raise ValueError("The privacy budget must be greater than 0.")
+
+    categories = np.unique(df[column].values)
+
+    dp_column = []
+    for i in range(len(df)):
+        original_value = df[column].iloc[i]
+        dp_value = probability_exp(original_value, categories, epsilon)
+        dp_column.append(dp_value)
+
+    if new_column:
+        df[f"dp_{column}"] = dp_column
+    else:
+        df[column] = dp_column
+
+    return df
+
+
+def probability_exp(value, categories, epsilon):
+    sensitivity = 1
+    scores = np.array([1 if value == c else 0 for c in categories])
+    exp_scores = np.exp((epsilon * scores) / 2 * sensitivity)
+    probs = exp_scores / sum(exp_scores)
+    return np.random.choice(categories, p=probs)
