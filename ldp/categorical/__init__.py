@@ -16,6 +16,6 @@
 DP Exponential mechanism for categorical columns.
 """
 
-from ._exponential import dp_exponential
+from ._exponential import dp_exponential, dp_exponential_array
 
-__all__ = ["dp_exponential"]
+__all__ = ["dp_exponential", "dp_exponential_array"]

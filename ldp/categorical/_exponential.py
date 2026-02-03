@@ -18,6 +18,7 @@
 
 import numpy as np
 import pandas as pd
+import typing
 
 
 def dp_exponential(
@@ -71,6 +72,43 @@ def dp_exponential(
         df[column] = dp_column
 
     return df
+
+
+def dp_exponential_array(
+    data: typing.Union[typing.List, np.ndarray],
+    epsilon: float,
+) -> np.ndarray:
+    """Apply the Exponential mechanism to an array with categorical values.
+
+    :param data: dataset with the data under study.
+    :type data: list or numpy array
+
+    :param epsilon: privacy budget.
+    :type epsilon: float
+
+    :return: array with data transformed applying the mechanism.
+    :rtype: numpy array.
+    """
+
+    if isinstance(data[0], str) == False:
+        raise ValueError(
+            "Type of the column not allowed for the Exponential mechanism."
+        )
+
+    if isinstance(data, list) == True:
+        data = np.array(data)
+
+    if epsilon <= 0:
+        raise ValueError("The privacy budget must be greater than 0.")
+
+    categories = np.unique(data)
+
+    dp_array = []
+    for original_value in data:
+        dp_value = probability_exp(original_value, categories, epsilon)
+        dp_array.append(dp_value)
+
+    return dp_array
 
 
 def probability_exp(value, categories, epsilon):
