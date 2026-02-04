@@ -1,4 +1,4 @@
-# SIESTA-LDP
+# TrasgoDP
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://github.com/judithspd/siesta-ldp/blob/main/LICENSE) 
 
 This library implements three mechanims for ε-differential privacy and (ε, δ)-differential privacy. The mechanisms are implemented for being used under a local approach, adding noise directly to the raw data. 
