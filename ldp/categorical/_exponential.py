@@ -39,8 +39,8 @@ def dp_exponential(
     :type epsilon: float
 
     :param new_column: boolean, default to False. If False, the new values obtained
-        with the mechanims applied are stored in the same column. If True, a new column
-        "dp_{column}" is created with the new values.
+        with the mechanims applied are stored in the same column. If True, a new 
+        column 'dp_{column}' is created with the new values.
     :type  new_column: boolean
 
     :return: dataframe with the column transformed applying the mechanism.
@@ -50,7 +50,7 @@ def dp_exponential(
     if column not in df.keys():
         raise ValueError("Column: {column} not in the dataframe.")
 
-    if isinstance(df[column].values[0], str) == False:
+    if isinstance(df[column].values[0], str) is False:
         raise ValueError(
             "Type of the column not allowed for the Exponential mechanism."
         )
@@ -90,12 +90,12 @@ def dp_exponential_array(
     :rtype: numpy array.
     """
 
-    if isinstance(data[0], str) == False:
+    if isinstance(data[0], str) is False:
         raise ValueError(
             "Type of the column not allowed for the Exponential mechanism."
         )
 
-    if isinstance(data, list) == True:
+    if isinstance(data, list):
         data = np.array(data)
 
     if epsilon <= 0:
