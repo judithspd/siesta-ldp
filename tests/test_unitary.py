@@ -1,5 +1,6 @@
 import unittest
 from ldp import numerical, categorical
+import numpy as np
 import pandas as pd
 
 
@@ -34,6 +35,11 @@ class TestInvalidValues(unittest.TestCase):
         epsilon = 1
         with self.assertRaises(ValueError):
             categorical.dp_exponential(self.data, column, epsilon)
+
+    def test_error_type_exponential(self):
+        epsilon = 1
+        with self.assertRaises(ValueError):
+            categorical.dp_exponential_array(self.data["age"].values, epsilon)
 
     def test_error_type_column_laplace(self):
         column = "education"
@@ -84,6 +90,37 @@ class TestInvalidValues(unittest.TestCase):
         epsilon = -1
         with self.assertRaises(ValueError):
             categorical.dp_exponential(self.data, column, epsilon)
+
+    def test_error_epsilon_exponential_array(self):
+        epsilon = -1
+        with self.assertRaises(ValueError):
+            categorical.dp_exponential_array(self.data["education"].values, epsilon)
+
+    def test_output_laplace(self):
+        epsilon = 1
+        column = "age"
+        data_dp = numerical.dp_clip_laplace(self.data, column, epsilon)
+        assert isinstance(data_dp, pd.DataFrame)
+
+    def test_output_gaussian(self):
+        epsilon = 1
+        delta = 1e-5
+        column = "age"
+        data_dp = numerical.dp_clip_gaussian(self.data, column, epsilon, delta)
+        assert isinstance(data_dp, pd.DataFrame)
+
+    def test_output_exponential(self):
+        epsilon = 1
+        column = "education"
+        data_dp = categorical.dp_exponential(self.data, column, epsilon)
+        assert isinstance(data_dp, pd.DataFrame)
+
+    def test_output_exponential_array(self):
+        epsilon = 1
+        data_dp = categorical.dp_exponential_array(
+            self.data["education"].values, epsilon
+        )
+        assert isinstance(data_dp, np.ndarray)
 
 
 if __name__ == "__main__":
