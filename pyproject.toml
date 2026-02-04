@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "siesta-LDP"
+name = "ldp"
 version = "0.0.1"
 description = "SIESTA-LDP"
 authors = [
