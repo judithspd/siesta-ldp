@@ -1,6 +1,7 @@
 # TrasgoDP
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://github.com/judithspd/trasgodp/blob/main/LICENSE) 
 [![codecov](https://codecov.io/gh/judithspd/trasgodp/graph/badge.svg?token=RGO77BTPHZ)](https://codecov.io/gh/judithspd/trasgodp)
+[![PyPI](https://img.shields.io/pypi/v/trasgodp)](https://pypi.org/project/trasgoDP/)
 [![Documentation Status](https://readthedocs.org/projects/trasgodp/badge/?version=latest)](https://trasgodp.readthedocs.io/en/latest/?badge=latest)
 [![CI/CD Pipeline](https://github.com/judithspd/trasgodp/actions/workflows/cicd.yml/badge.svg)](https://github.com/judithspd/trasgodp/actions/workflows/cicd.yml)
 ![Python version](https://img.shields.io/badge/python-3.10|3.11|3.12|3.13|3.14-blue)
