@@ -13,5 +13,5 @@ Install the most updated version (linux and windows), using git:
 
 .. code-block:: console
 
-   pip install git+https://github.com/judithspd/siesta-ldp.git
+   pip install git+https://github.com/judithspd/trasgodp.git
 
