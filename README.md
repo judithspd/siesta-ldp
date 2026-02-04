@@ -13,7 +13,7 @@ Two types of mechanims are implemented:
 This library provides dedicated function designed for being applied on both pandas dataframes and lists/numpy arrays. 
 
 ## Getting started
-For applying DP mechanisms on your data you need to introduce:
+For applying DP mechanisms to a column of a dataframe you need to introduce:
 * The **pandas dataframe** with the data.
 * The **column** in the dataframe to be privatized.
 * The **privacy budget (ε)**.
