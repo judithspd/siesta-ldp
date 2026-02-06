@@ -219,6 +219,40 @@ class TestInvalidValues(unittest.TestCase):
         )
         assert len(data_dp.columns) == len(self.data.columns) + 1
 
+    def test_error_epsilon_kary(self):
+        epsilon = -1
+        column = "sex"
+        with self.assertRaises(ValueError):
+            categorical.dp_randomized_response_kary(self.data, column, epsilon)
+            
+    def test_output_rr_kary(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(self.data, column, epsilon)
+        assert isinstance(data_dp, pd.DataFrame)
+
+    def test_nobinary_rr_kary(self):
+        epsilon = 1
+        column = "sex"
+        with self.assertRaises(ValueError):
+            categorical.dp_randomized_response_kary(self.data, column, epsilon)
+
+    def test_output_rr_kary_newcolumn(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=True
+        )
+        assert isinstance(data_dp, pd.DataFrame)
+
+    def test_output_rr_kary_newcolumn_len(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=True
+        )
+        assert len(data_dp.columns) == len(self.data.columns) + 1
+
 
 if __name__ == "__main__":
     unittest.main()
