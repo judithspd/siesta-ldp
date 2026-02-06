@@ -15,6 +15,15 @@ Two types of mechanims are implemented:
 - For categorical records: _Exponential mechanism_ and _Randomized Response_ (both for binary attributes and the k-ary version).
 
 This library provides dedicated function designed for being applied on both pandas dataframes and lists/numpy arrays. 
+## Installation
+
+You can install _trasgoDP_ using [pip](https://pypi.org/project/trasgoDP/). We recommend to use Python3 with [virtualenv](https://virtualenv.pypa.io/en/latest/):
+
+```bash
+virtualenv .venv -p python3
+source .venv/bin/activate
+pip install trasgoDP
+```
 
 ## Getting started
 For applying DP mechanisms to a column of a dataframe you need to introduce:
@@ -61,6 +70,11 @@ This project is under active development.
 ## License
 This project is licensed under the [Apache 2.0 license](https://github.com/judithspd/trasgodp/blob/main/LICENSE).
 
+## Related work
+If you are using ___trasgoDP___, you may also be interested in:
+- [_pyCANON_](https://github.com/IFCA-Advanced-Computing/pycanon): a Python library for checking the level of anonymity of a dataset.
+- [_anjana_](https://github.com/IFCA-Advanced-Computing/anjana): a Python library for anonymizing tabular datasets.
+ 
 ## Funding and acknowledgments
 This work is funded by European Union through the SIESTA project (Horizon Europe) under Grant number [101131957](https://cordis.europa.eu/project/id/101131957).
 <p>
