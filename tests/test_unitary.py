@@ -221,23 +221,29 @@ class TestInvalidValues(unittest.TestCase):
 
     def test_error_epsilon_kary(self):
         epsilon = -1
-        column = "sex"
+        column = "workclass"
         with self.assertRaises(ValueError):
             categorical.dp_randomized_response_kary(self.data, column, epsilon)
-            
-    def test_output_rr_kary(self):
+
+    def test_error_column_kary(self):
+        epsilon = 1
+        column = "work"
+        with self.assertRaises(ValueError):
+            categorical.dp_randomized_response_kary(self.data, column, epsilon)
+
+    def test_output_kary(self):
         epsilon = 1
         column = "workclass"
         data_dp = categorical.dp_randomized_response_kary(self.data, column, epsilon)
         assert isinstance(data_dp, pd.DataFrame)
 
-    def test_nobinary_rr_kary(self):
+    def test_binary_kary(self):
         epsilon = 1
         column = "sex"
         with self.assertRaises(ValueError):
             categorical.dp_randomized_response_kary(self.data, column, epsilon)
 
-    def test_output_rr_kary_newcolumn(self):
+    def test_output_kary_newcolumn(self):
         epsilon = 1
         column = "workclass"
         data_dp = categorical.dp_randomized_response_kary(
@@ -245,7 +251,7 @@ class TestInvalidValues(unittest.TestCase):
         )
         assert isinstance(data_dp, pd.DataFrame)
 
-    def test_output_rr_kary_newcolumn_len(self):
+    def test_output_kary_newcolumn_len(self):
         epsilon = 1
         column = "workclass"
         data_dp = categorical.dp_randomized_response_kary(
