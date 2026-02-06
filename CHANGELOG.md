@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.1](https://github.com/judithspd/trasgoDP/compare/v0.1.0...v0.1.1) (2026-02-06)
+
+
+### Bug Fixes
+
+* update README.md ([bbbfe2c](https://github.com/judithspd/trasgoDP/commit/bbbfe2cfa32bcc44f76c2854523ea300006c22c8))
+
+
+### Documentation
+
+* update docs ([7dcc9b6](https://github.com/judithspd/trasgoDP/commit/7dcc9b6c198aaaa87db3363f506b6e18fb05c196))
+
 ## [0.1.0](https://github.com/judithspd/trasgoDP/compare/v0.0.1...v0.1.0) (2026-02-06)
 
 
