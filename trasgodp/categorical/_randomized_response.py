@@ -98,7 +98,6 @@ def dp_randomized_response_kary(
     epsilon: float,
     new_column=False,
 ) -> pd.DataFrame:
-    df = copy.deepcopy(df)
     """Apply the Randomized Response mechanism to column of a dataframe (no binary).
 
     :param df: dataframe with the data under study.
@@ -118,6 +117,7 @@ def dp_randomized_response_kary(
     :return: dataframe with the column transformed applying the mechanism.
     :rtype: pandas dataframe.
     """
+    df = copy.deepcopy(df)
     if column not in df.keys():
         raise ValueError("Column: {column} not in the dataframe.")
 
