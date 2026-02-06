@@ -12,7 +12,7 @@
 TrasgoDP implements different mechanims for ε-differential privacy and (ε, δ)-differential privacy. The mechanisms are implemented for being used under a local approach, adding noise directly to the raw data. 
 Two types of mechanims are implemented: 
 - For numerical records: _Laplace_ and _Gaussian mechanisms_. The implementation includes a final clipping applyied on the data with DP.
-- For categorical records: _Exponential mechanism_.
+- For categorical records: _Exponential mechanism_ and _Randomized Response_ (both for binary attributes and the k-ary version).
 
 This library provides dedicated function designed for being applied on both pandas dataframes and lists/numpy arrays. 
 
