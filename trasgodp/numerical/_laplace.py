@@ -18,6 +18,7 @@
 
 import numpy as np
 import pandas as pd
+import copy
 
 
 def dp_clip_laplace(
@@ -53,6 +54,7 @@ def dp_clip_laplace(
     :return: dataframe with the column transformed applying the mechanism.
     :rtype: pandas dataframe.
     """
+    df = copy.deepcopy(df)
     if column not in df.keys():
         raise ValueError("Column: {column} not in the dataframe.")
 

@@ -19,6 +19,7 @@
 import numpy as np
 import pandas as pd
 import typing
+import copy
 
 
 def dp_exponential(
@@ -46,6 +47,7 @@ def dp_exponential(
     :return: dataframe with the column transformed applying the mechanism.
     :rtype: pandas dataframe.
     """
+    df = copy.deepcopy(df)
     if column not in df.keys():
         raise ValueError("Column: {column} not in the dataframe.")
 
