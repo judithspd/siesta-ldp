@@ -14,10 +14,11 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-"""Randomized response algorithm (binary) mechanism for local DP."""
+"""Randomized response algorithm mechanisms for local DP."""
 
 import numpy as np
 import pandas as pd
+import scipy
 
 
 def dp_randomized_response_binary(
@@ -80,6 +81,62 @@ def dp_randomized_response_binary(
             _dp_column.append(int(np.abs(value - 1)))
 
     dp_column = [positive_label if v == 1 else negative_label for v in _dp_column]
+
+    if new_column:
+        df[f"dp_{column}"] = dp_column
+    else:
+        df[column] = dp_column
+
+    return df
+
+
+def dp_randomized_response_kary(
+    df: pd.DataFrame,
+    column: str,
+    epsilon: float,
+    new_column=False,
+) -> pd.DataFrame:
+    """Apply the Randomized Response mechanism to column of a dataframe (no binary).
+
+    :param df: dataframe with the data under study.
+    :type df: pandas dataframe
+
+    :param columm: column to which the DP mechanism will be applied. Binary data.
+    :type columm: string
+
+    :param epsilon: privacy budget.
+    :type epsilon: float
+
+    :param new_column: boolean, default to False. If False, the new values obtained
+        with the mechanims applied are stored in the same column. If True, a new
+        column 'dp_{column}' is created with the new values.
+    :type  new_column: boolean
+
+    :return: dataframe with the column transformed applying the mechanism.
+    :rtype: pandas dataframe.
+    """
+    if column not in df.keys():
+        raise ValueError("Column: {column} not in the dataframe.")
+
+    categories = np.unique(df[column].values)
+    k = len(categories)
+    if k < 3:
+        raise ValueError("Three or more categories are required.")
+
+    if epsilon <= 0:
+        raise ValueError("The privacy budget must be greater than 0.")
+
+    data = df[column].values
+
+    p_b = k / (np.exp(epsilon) + k - 1)
+    dp_column = []
+    for value in data:
+        b = scipy.stats.bernoulli.rvs(p_b)
+        if b == 0:
+            dp_column.append(value)
+        else:
+            id_k = scipy.stats.uniform.rvs(loc=0, scale=k)
+            dp_column.append(categories[int(id_k)])
 
     if new_column:
         df[f"dp_{column}"] = dp_column
