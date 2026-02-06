@@ -1,9 +1,10 @@
-.. image:: https://raw.githubusercontent.com/judithspd/trasgodp/main/images/logo_trasgodp.png
-   :align: center
-   :width: 500px
+.. trasgoDP documentation master file, created by
+   sphinx-quickstart on Wed Feb  4 15:57:56 2026.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
-|License| |codecov| |PyPI| |Documentation Status| |Publish Package in PyPI| |CI/CD Pipeline| |Code Coverage| |Python version| 
-
+trasgoDP documentation
+========================
 Start applying local differential privacy directly to you data in few lines of code.
 
 This Python library allows to apply local differential privacy to a dataset or to an array. It can be applied to categorical attributes (using the Exponential mechanism), or to numerical ones (using the Laplace or Gaussian mechanism).
@@ -35,18 +36,3 @@ Indices and tables
 * :ref:`search`
 
 .. _Apache License Version 2.0: http://www.apache.org/licenses/
-.. |License| image:: https://img.shields.io/badge/License-Apache_2.0-green.svg
-   :target: https://github.com/judithspd/trasgodp/blob/main/LICENSE
-.. |codecov| image:: https://codecov.io/gh/judithspd/trasgodp/graph/badge.svg?token=RGO77BTPHZ
-   :target: https://codecov.io/gh/judithspd/trasgodp
-.. |PyPI| image:: https://img.shields.io/pypi/v/trasgodp
-   :target: https://pypi.org/project/trasgoDP/
-.. |Documentation Status| image:: https://readthedocs.org/projects/trasgodp/badge/?version=latest
-   :target: https://trasgodp.readthedocs.io/en/latest/?badge=latest
-.. |Publish Package in PyPI| image:: https://github.com/judithspd/trasgodp/actions/workflows/pypi.yml/badge.svg
-   :target: https://github.com/judithspd/trasgodp/actions/workflows/pypi.yml
-.. |CI/CD Pipeline| image:: https://github.com/judithspd/trasgodp/actions/workflows/cicd.yml/badge.svg
-   :target: https://github.com/judithspd/trasgodp/actions/workflows/cicd.yml
-.. |Code Coverage| image:: https://github.com/judithspd/trasgodp/actions/workflows/.codecov.yml/badge.svg
-   :target: https://github.com/judithspd/trasgodp/actions/workflows/.codecov.yml
-.. |Python version| image:: https://img.shields.io/badge/python-3.10|3.11|3.12|3.13|3.14-blue
